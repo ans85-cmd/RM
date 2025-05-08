@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regionalmanager-APP</title>
+
+    <!-- iPhone/iPad Home-Screen Icon -->
+    <link rel="apple-touch-icon" href="logo.png">
+
+    <!-- iPhone-Kompatibilität -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Regionalmanager">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <style>
+        /* Allgemeine Stile */
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: #cc0000; /* ÖBB Rot */
+            color: white;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+
+        .button-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+
+        .button-list li {
+            margin: 15px 0;
+        }
+
+        .button-list a {
+            display: inline-block;
+            background-color: #cc0000;
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+        }
+
+        .button-list a:hover {
+            background-color: #a60000;
+            transform: translateY(-5px); /* Schwebender Effekt */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+
+        /* Dark Mode Styles */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212; /* Dunkler Hintergrund */
+                color: #f0f0f0; /* Helle Schriftfarbe */
+            }
+
+            header {
+                background-color: #ff4d4d; /* Helleres Rot für Dark Mode */
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            }
+
+            .button-list a {
+                background-color: #ff4d4d;
+                color: #f0f0f0;
+            }
+
+            .button-list a:hover {
+                background-color: #e60000;
+                transform: translateY(-5px); /* Schwebender Effekt */
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            }
+
+            footer {
+                color: #bbb;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Regionalmanager APP</h1>
+    </header>
+
+    <ul class="button-list">
+        <li><a href="https://etd.oebb-produktion.at/FZGSearch" target="_blank">ETD Fahrzeugsuche</a></li>
+        <li><a href="https://zumber.oebb.at/zub/train/search" target="_blank">ZUMBER Mangelsuche</a></li>
+        <li><a href="https://etd.oebb-produktion.at/Wagenliste" target="_blank">ETD Wagenliste</a></li>
+        <li><a href="https://etd.oebb-produktion.at/TrainDelayReasons" target="_blank">ETD Personalsuche</a></li>
+    </ul>
+
+    <footer>
+        <p>by ANS85-CMD</p>
+    </footer>
+
+</body>
+</html>
+
