@@ -3,43 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Regionalmanager-APP</title>
 
-  <!-- iOS Web-App Unterstützung -->
+  <title>RM-APP</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#cc0000">
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- iOS -->
   <link rel="apple-touch-icon" href="logo.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="Regionalmanager">
+  <meta name="apple-mobile-web-app-title" content="RM-App">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <style>
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
       color: #333;
       text-align: center;
-      position: relative;
-      background: url("Lok.jpg") no-repeat center center fixed;
+      background: url("bg.jpg") no-repeat center center fixed;
       background-size: cover;
-      overflow-x: hidden;
     }
 
-    /* Weiche Überlagerung für bessere Lesbarkeit */
     body::before {
       content: "";
       position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,240,240,0.7));
-      backdrop-filter: blur(4px);
+      inset: 0;
+      background: rgba(255,255,255,0.85);
       z-index: -1;
-      animation: fadeIn 2s ease-in;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
     }
 
     header {
@@ -50,18 +43,19 @@
       align-items: center;
       justify-content: center;
       gap: 15px;
-      flex-wrap: wrap;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
     header img {
       height: 50px;
-      width: auto;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 1.8em;
+    .title {
+      text-align: left;
+    }
+
+    .subtitle {
+      font-size: 0.8em;
+      opacity: 0.8;
     }
 
     .button-list {
@@ -80,80 +74,29 @@
       background-color: #cc0000;
       color: white;
       text-decoration: none;
-      padding: 15px 25px;
+      padding: 15px;
       border-radius: 10px;
-      font-size: 1.1em;
-      position: relative;
-      overflow: hidden;
-      transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
-    }
-
-    .button-list a::before {
-      content: '';
-      position: absolute;
-      left: -100%;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.15);
-      transition: left 0.4s ease;
-    }
-
-    .button-list a:hover::before {
-      left: 0;
     }
 
     .button-list a:hover {
       background-color: #a60000;
-      transform: translateX(5px);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    footer {
-      font-size: 0.9em;
-      color: #666;
-      margin: 40px 0 20px 0;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      body::before {
-        background: linear-gradient(135deg, rgba(20,20,20,0.8), rgba(50,0,0,0.6));
-      }
-
-      body {
-        color: #f0f0f0;
-      }
-
-      header {
-        background-color: #ff4d4d;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-      }
-
-      .button-list a {
-        background-color: #ff4d4d;
-        color: #f0f0f0;
-      }
-
-      .button-list a:hover {
-        background-color: #e60000;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      }
-
-      footer {
-        color: #bbb;
-      }
     }
   </style>
 </head>
+
 <body>
 
   <header>
-    <img src="logo.png" alt="Logo">
-    <h1>Regionalmanager APP</h1>
+    <img src="logo.png">
+    <div class="title">
+      <h1>RM-APP</h1>
+      <div class="subtitle">Fattome André</div>
+    </div>
   </header>
 
   <ul class="button-list">
     <li><a href="redirect.html" target="_blank">Züge/Linien - ÖBB</a></li>
+    <li><a href="https://oebb365.sharepoint.com/sites/Bs-Salzburg/SitePages/Home.aspx" target="_blank">ZubAPP</a></li>
     <li><a href="https://etd.oebb-produktion.at/FZGSearch" target="_blank">ETD Fahrzeugsuche</a></li>
     <li><a href="https://zumber.oebb.at/zub/train/search" target="_blank">ZUMBER Mangelsuche</a></li>
     <li><a href="https://etd.oebb-produktion.at/Wagenliste" target="_blank">ETD Wagenliste</a></li>
@@ -163,10 +106,15 @@
   </ul>
 
   <footer>
-    <p>by ANS85-CMD</p>
+    <p>bk2026</p>
   </footer>
+
+  <!-- Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
 
 </body>
 </html>
-
-
