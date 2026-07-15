@@ -1,120 +1,59 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>RM-APP</title>
-
-  <!-- PWA -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#cc0000">
-  <meta name="mobile-web-app-capable" content="yes">
-
-  <!-- iOS -->
-  <link rel="apple-touch-icon" href="logo.png">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="RM-App">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-  <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
-      color: #333;
-      text-align: center;
-      background: url("bg.jpg") no-repeat center center fixed;
-      background-size: cover;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(255,255,255,0.85);
-      z-index: -1;
-    }
-
-    header {
-      background-color: #cc0000;
-      color: white;
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    header img {
-      height: 50px;
-    }
-
-    .title {
-      text-align: left;
-    }
-
-    .subtitle {
-      font-size: 0.8em;
-      opacity: 0.8;
-    }
-
-    .button-list {
-      list-style: none;
-      padding: 0;
-      margin: 30px auto;
-      max-width: 400px;
-    }
-
-    .button-list li {
-      margin: 15px 0;
-    }
-
-    .button-list a {
-      display: block;
-      background-color: #cc0000;
-      color: white;
-      text-decoration: none;
-      padding: 15px;
-      border-radius: 10px;
-    }
-
-    .button-list a:hover {
-      background-color: #a60000;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RM-APP</title>
+<meta name="theme-color" content="#e2001a">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<style>
+:root{--red:#e2001a;--bg:#070b12;--card:#111827;--text:#fff;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Segoe UI,sans-serif;background:linear-gradient(135deg,#070b12,#0e1322);color:#fff;min-height:100vh}
+header{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:15px 20px;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);border-bottom:1px solid rgba(226,0,26,.4)}
+.brand{display:flex;align-items:center;gap:12px}.brand img{width:56px;height:56px;border-radius:50%;box-shadow:0 0 20px var(--red)}
+.brand h1{font-size:1.6rem}.brand p{color:#bbb;font-size:.85rem}
+.burger{background:#1b2236;border:none;color:#fff;width:48px;height:48px;border-radius:14px;font-size:20px}
+.hero{text-align:center;padding:20px}.clock{color:#ff5c70;font-weight:bold;font-size:1.2rem}
+.dashboard{padding:16px;display:grid;grid-template-columns:repeat(2,minmax(140px,1fr));gap:14px}
+.card{text-decoration:none;color:#fff;background:linear-gradient(145deg,#131c2f,#0d1422);padding:20px;border-radius:22px;min-height:145px;border:1px solid rgba(255,255,255,.08);transition:.2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 0 25px rgba(226,0,26,.35)}
+.icon{width:54px;height:54px;border-radius:16px;background:rgba(226,0,26,.15);display:flex;align-items:center;justify-content:center;font-size:22px;color:#ff6377;margin-bottom:14px}
+.card p{color:#aaa;margin-top:6px;font-size:.85rem}.full{grid-column:1/-1;min-height:90px}
+.menu{position:fixed;top:0;right:-320px;width:300px;height:100%;background:#101827;padding-top:80px;transition:.3s;z-index:999}.menu.active{right:0}
+.menu a{display:block;color:#fff;text-decoration:none;margin:10px;padding:12px;border-radius:12px;background:#1a2338}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);opacity:0;visibility:hidden;transition:.3s}.overlay.active{opacity:1;visibility:visible}
+footer{text-align:center;padding:25px;color:#777;font-size:12px}
+</style>
 </head>
-
 <body>
-
-  <header>
-    <img src="logo.png">
-    <div class="title">
-      <h1>RM-APP</h1>
-      <div class="subtitle">Fattome André</div>
-    </div>
-  </header>
-
-  <ul class="button-list">
-    <li><a href="redirect.html" target="_blank">Züge/Linien - ÖBB</a></li>
-    <li><a href="https://oebb365.sharepoint.com/sites/Bs-Salzburg/SitePages/Home.aspx" target="_blank">ZubAPP</a></li>
-    <li><a href="https://etd.oebb-produktion.at/FZGSearch" target="_blank">ETD Fahrzeugsuche</a></li>
-    <li><a href="https://zumber.oebb.at/zub/train/search" target="_blank">ZUMBER Mangelsuche</a></li>
-    <li><a href="https://etd.oebb-produktion.at/Wagenliste" target="_blank">ETD Wagenliste</a></li>
-    <li><a href="https://etd.oebb-produktion.at/PersonalZuZug" target="_blank">ETD Personalsuche</a></li>
-    <li><a href="https://lokfinder.oebb.at" target="_blank">🔎 Lokfinder öffnen</a></li>
-    <li><a href="#" onclick="location.reload(); return false;">🔄 Seite aktualisieren</a></li>
-  </ul>
-
-  <footer>
-    <p>bk2026</p>
-  </footer>
-
-  <!-- Service Worker -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js');
-    }
-  </script>
-
-</body>
-</html>
+<header>
+<div class="brand"><img src="logo.png" alt="Logo"><div><h1>RM-APP</h1><p>Fattome André</p></div></div>
+<button class="burger" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+</header>
+<nav class="menu" id="menu">
+<a href="redirect.html">Züge / Linien</a>
+<a href="https://oebb365.sharepoint.com/sites/Bs-Salzburg/SitePages/Home.aspx" target="_blank">ZubAPP</a>
+<a href="https://etd.oebb-produktion.at/FZGSearch" target="_blank">Fahrzeugsuche</a>
+<a href="https://zumber.oebb.at/zub/train/search" target="_blank">ZUMBER</a>
+<a href="https://etd.oebb-produktion.at/Wagenliste" target="_blank">Wagenliste</a>
+<a href="https://etd.oebb-produktion.at/PersonalZuZug" target="_blank">Personalsuche</a>
+<a href="https://lokfinder.oebb.at" target="_blank">Lokfinder</a>
+</nav>
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+<section class="hero"><div class="clock" id="clock"></div></section>
+<div class="dashboard">
+<a class="card" href="redirect.html"><div class="icon"><i class="fa-solid fa-train"></i></div><h3>Züge</h3><p>Linien & Fahrten</p></a>
+<a class="card" href="https://oebb365.sharepoint.com/sites/Bs-Salzburg/SitePages/Home.aspx" target="_blank"><div class="icon"><i class="fa-solid fa-file-lines"></i></div><h3>ZubAPP</h3><p>SharePoint</p></a>
+<a class="card" href="https://etd.oebb-produktion.at/FZGSearch" target="_blank"><div class="icon"><i class="fa-solid fa-train-subway"></i></div><h3>ETD</h3><p>Fahrzeugsuche</p></a>
+<a class="card" href="https://zumber.oebb.at/zub/train/search" target="_blank"><div class="icon"><i class="fa-solid fa-magnifying-glass"></i></div><h3>ZUMBER</h3><p>Mangelsuche</p></a>
+<a class="card" href="https://lokfinder.oebb.at" target="_blank"><div class="icon"><i class="fa-solid fa-location-dot"></i></div><h3>Lokfinder</h3><p>Position finden</p></a>
+<a class="card" href="#" onclick="location.reload();return false;"><div class="icon"><i class="fa-solid fa-rotate-right"></i></div><h3>Reload</h3><p>Aktualisieren</p></a>
+</div>
+<footer>(c)bk2026</footer>
+<script>
+function toggleMenu(){menu.classList.toggle('active');overlay.classList.toggle('active');}
+function updateClock(){clock.textContent=new Date().toLocaleTimeString('de-AT',{hour:'2-digit',minute:'2-digit'});}
+setInterval(updateClock,1000);updateClock();
+</script>
+</body></html>
